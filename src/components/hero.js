@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import LoginButtons from "../components/loginButtons"
+import LoginButtons from "./login"
 
 const Hero = () => {
   const data = useStaticQuery(graphql`
@@ -31,7 +31,9 @@ const Hero = () => {
             interests. Discover innovative products, made possible by the
             collective wisdom of our users.
           </p>
-          <LoginButtons />
+          <div className="flex flex-col max-w-xs">
+            <LoginButtons />
+          </div>
         </div>
       </div>
     </div>
