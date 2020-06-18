@@ -15,8 +15,9 @@ const Category = ({ title, image, products }) => {
 
       <div className="flex flex-col justify-center items-center">
         <div className="flex justify-center flex-row-reverse py-4 pl-10 pr-6 text-center">
-          {products.map(image => (
+          {products.map((image, index) => (
             <Img
+              key={index}
               fixed={image.fixed}
               className="border-4 border-white rounded-full -ml-3"
             />
