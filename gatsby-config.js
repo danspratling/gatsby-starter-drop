@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Drop`,
-    description: `The amazing desing of Drop`,
+    title: `Gatsby Starter Drop`,
+    description: `Store starter inspired by the amazing design of Drop. Enhanced using Gatsby.`,
     author: `@dan_spratling`,
   },
   plugins: [

@@ -1,9 +1,50 @@
 module.exports = {
   purge: ["./src/**/*.js"],
   theme: {
+    inset: {
+      "1/4": "25%",
+      "1/2": "50%",
+      "3/4": "75%",
+    },
     extend: {
+      fontFamily: {
+        heading: ['"Roboto Condensed"', "sans-serif"],
+        serif: [
+          "Roboto",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          "Arial",
+          '"Noto Sans"',
+          "sans-serif",
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          '"Noto Color Emoji"',
+        ],
+      },
       maxWidth: {
         "7xl": "90rem",
+      },
+      minHeight: {
+        xs: "20rem",
+        sm: "24rem",
+        md: "28rem",
+        lg: "32rem",
+        xl: "36rem",
+        "2xl": "42rem",
+        "3xl": "48rem",
+        "4xl": "56rem",
+        "5xl": "64rem",
+        "6xl": "72rem",
+        "screen-sm": "640px",
+        "screen-md": "768px",
+        "screen-lg": "1024px",
+        "screen-xl": "1280px",
+        none: "none",
       },
       padding: {
         "72": "18rem",

@@ -1,14 +1,15 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import LoginButtons from "../components/loginButtons"
 
 const Hero = () => {
   const data = useStaticQuery(graphql`
     query {
       image: file(relativePath: { eq: "header-image-yellow.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
+          fixed(height: 725) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -16,14 +17,24 @@ const Hero = () => {
   `)
 
   return (
-    <>
-      <div className="w-full max-w-7xl m-auto">
-        <div className="pl-72">
-          <Img fluid={data.image.childImageSharp.fluid} />
+    <div className="relative w-full max-w-7xl m-auto mb-12">
+      <div className="md:pl-48 lg:pl-72">
+        <Img fixed={data.image.childImageSharp.fixed} />
+      </div>
+      <div className="absolute top-1/2 left-0 transform -translate-y-48 pl-16">
+        <div className="max-w-md bg-white p-8">
+          <h1 className="text-4xl leading-tight mb-4 uppercase">
+            Community-inspired products, designed for everyone.
+          </h1>
+          <p className="pb-6">
+            Join our community of passionate people to find and follow your
+            interests. Discover innovative products, made possible by the
+            collective wisdom of our users.
+          </p>
+          <LoginButtons />
         </div>
       </div>
-      <div className="">CONTENT</div>
-    </>
+    </div>
   )
 }
 
