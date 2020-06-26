@@ -9,7 +9,7 @@ import Promos from "../components/promos"
 import Login from "../components/login"
 
 const IndexPage = () => (
-  <Layout>
+  <Layout headerScrollType="scroll">
     <SEO title="Home" />
     <Hero />
     <Categories />

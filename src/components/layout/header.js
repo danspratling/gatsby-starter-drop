@@ -1,7 +1,13 @@
 import React, { useRef, useState } from "react"
 import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => {
+/**
+ *
+ * @param {Object} props
+ * @param {string} props.siteTitle
+ * @param {"none"|"static"|"scroll"} props.headerScrollType
+ */
+const Header = ({ siteTitle, headerScrollType = "none" }) => {
   const headerEl = useRef(null)
   const [sticky, setSticky] = useState(false)
 
@@ -12,12 +18,26 @@ const Header = ({ siteTitle }) => {
     }
   }
 
+  const headerScrollMap = {
+    none: "bg-white border-gray-300",
+    static: "fixed top-0 z-50 bg-white border-gray-300",
+    noScroll: "fixed top-0 z-50",
+    scroll: "fixed top-0 z-50 bg-white border-gray-300",
+  }
+
+  const headerClasses = () => {
+    if (headerScrollType === "scroll")
+      return !sticky
+        ? headerScrollMap.noScroll
+        : headerScrollMap[headerScrollType]
+
+    return headerScrollMap[headerScrollType]
+  }
+
   return (
     <header
       ref={headerEl}
-      className={`fixed w-full top-0 z-50 border-b border-transparent transform duration-500 ${
-        sticky && "bg-white border-gray-300"
-      }`}
+      className={`w-full border-b border-transparent transform duration-500 ${headerClasses()}`}
     >
       <div className="max-w-7xl w-full mx-auto my-2 px-16">
         <div className="flex justify-between items-center">
