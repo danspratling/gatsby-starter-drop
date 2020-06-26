@@ -8,7 +8,26 @@ import Link from "../components/link"
 import Button from "../components/link/button"
 
 const IndexPage = ({ data }) => {
-  const { image, leaderImage, investorImage } = data
+  const {
+    headerImageMobile,
+    headerImageDesktop,
+    leaderImage,
+    investorImage,
+  } = data
+
+  const header = {
+    image: [
+      headerImageMobile.childImageSharp.fluid,
+      {
+        ...headerImageDesktop.childImageSharp.fluid,
+        media: `(min-width: 768px)`,
+      },
+    ],
+    link: {
+      title: "Join us",
+      url: "/careers",
+    },
+  }
 
   const nav = [
     { link: "/about#info", title: "Company Info" },
@@ -23,48 +42,48 @@ const IndexPage = ({ data }) => {
       name: "Dan Spratling",
       url: "/",
       position: "A pretty great guy",
-      image: leaderImage.childImageSharp,
+      image: leaderImage.childImageSharp.fluid,
     },
     {
       name: "Dan Spratling",
       url: "/",
       position: "A pretty great guy",
-      image: leaderImage.childImageSharp,
+      image: leaderImage.childImageSharp.fluid,
     },
     {
       name: "Dan Spratling",
       url: "/",
       position: "A pretty great guy",
-      image: leaderImage.childImageSharp,
+      image: leaderImage.childImageSharp.fluid,
     },
     {
       name: "Dan Spratling",
       url: "/",
       position: "A pretty great guy",
-      image: leaderImage.childImageSharp,
+      image: leaderImage.childImageSharp.fluid,
     },
   ]
 
   const investors = [
     {
       url: "/",
-      image: investorImage.childImageSharp,
+      image: investorImage.childImageSharp.fluid,
     },
     {
       url: "/",
-      image: investorImage.childImageSharp,
+      image: investorImage.childImageSharp.fluid,
     },
     {
       url: "/",
-      image: investorImage.childImageSharp,
+      image: investorImage.childImageSharp.fluid,
     },
     {
       url: "/",
-      image: investorImage.childImageSharp,
+      image: investorImage.childImageSharp.fluid,
     },
     {
       url: "/",
-      image: investorImage.childImageSharp,
+      image: investorImage.childImageSharp.fluid,
     },
   ]
 
@@ -72,20 +91,23 @@ const IndexPage = ({ data }) => {
     <Layout className="bg-gray-100">
       <SEO title="About" />
       <div className="w-full max-w-7xl m-auto">
-        <div className="relative mx-16">
-          <Img fluid={image.childImageSharp.fluid} />
+        <div className="relative mx-2 md:mx-16">
+          <Img
+            fluid={header.image}
+            className="rounded-b-lg md:rounded-b-none"
+          />
 
           <div className="absolute left-0 bottom-0 w-full flex items-center justify-center transform -translate-y-full py-4">
-            <Button to="/careers">Join us</Button>
+            <Button to={header.link.url}>{header.link.title}</Button>
           </div>
         </div>
       </div>
 
       <div className="w-full max-w-4xl m-auto">
         <div className="relative mx-16 my-4">
-          <nav className="flex justify-evenly">
+          <nav className="flex flex-wrap justify-evenly">
             {nav.map(item => (
-              <p className="text-sm text-gray-500 hover:text-gray-600 focus:text-gray-600 border-b border-transparent hover:border-gray-600 focus:border-gray-600 uppercase tracking-wider pb-1 m-4">
+              <p className="text-sm text-gray-500 hover:text-gray-600 focus:text-gray-600 border-b border-transparent hover:border-gray-600 focus:border-gray-600 uppercase tracking-wider pb-1 m-2">
                 <Link to={item.link}>{item.title}</Link>
               </p>
             ))}
@@ -94,8 +116,8 @@ const IndexPage = ({ data }) => {
       </div>
 
       <div className="w-full max-w-4xl m-auto">
-        <div className="relative mx-16 my-4 py-4 text-center">
-          <h2 className="text-2xl font-serif font-bold mb-6">
+        <div className="relative mx-4 md:mx-16 my-4 py-4 text-center">
+          <h2 className="text-2xl font-serif font-bold leading-tight mb-6">
             Community-Inpsired Products, Designed for Everyone
           </h2>
           <p>
@@ -116,15 +138,17 @@ const IndexPage = ({ data }) => {
       </div>
 
       <div className="w-full max-w-4xl m-auto">
-        <div className="relative mx-16 my-4 py-4 text-center">
-          <h2 className="text-2xl font-serif font-bold mb-6">Leadership</h2>
+        <div className="relative mx-4 md:mx-16 my-4 py-4 text-center">
+          <h2 className="text-2xl font-serif font-bold leading-tight mb-6">
+            Leadership
+          </h2>
           <div className="grid grid-cols-2 gap-4 justify-center text-left my-8">
             {leaders.map(({ name, url, position, image }) => (
               <Link
                 to={url}
                 className="text-gray-600 hover:text-gray-700 focus:text-gray-700"
               >
-                <Img fluid={image.fluid} />
+                <Img fluid={image} />
                 <h4 className="text-xl text-gray-900 font-serif">{name}</h4>
                 <p className="text-sm">{position}</p>
               </Link>
@@ -134,12 +158,14 @@ const IndexPage = ({ data }) => {
       </div>
 
       <div className="w-full max-w-4xl m-auto">
-        <div className="relative mx-16 my-4 py-4 text-center">
-          <h2 className="text-2xl font-serif font-bold mb-6">Investors</h2>
-          <div className="grid grid-cols-3 gap-4 items-center justify-center my-8">
+        <div className="relative mx-4 md:mx-16 my-4 py-4 text-center">
+          <h2 className="text-2xl font-serif font-bold leading-tight mb-6">
+            Investors
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 items-center justify-center my-8">
             {investors.map(({ url, image }) => (
               <Link to={url}>
-                <Img fluid={image.fluid} />
+                <Img fluid={image} />
               </Link>
             ))}
           </div>
@@ -147,8 +173,8 @@ const IndexPage = ({ data }) => {
       </div>
 
       <div className="w-full max-w-4xl m-auto">
-        <div className="relative mx-16 my-4 py-4 text-center">
-          <h2 className="text-2xl font-serif font-bold mb-6">
+        <div className="relative mx-4 md:mx-16 my-4 py-4 text-center">
+          <h2 className="text-2xl font-serif font-bold leading-tight mb-6">
             Love where you work
           </h2>
           <p>
@@ -165,9 +191,11 @@ const IndexPage = ({ data }) => {
       </div>
 
       <div className="w-full max-w-4xl m-auto">
-        <div className="relative mx-16 my-4 py-4 text-center">
-          <h2 className="text-2xl font-serif font-bold mb-6">Contact us</h2>
-          <div className="grid grid-cols-3 gap-4 items-center justify-center my-8">
+        <div className="relative mx-4 md:mx-16 my-4 py-4 text-center">
+          <h2 className="text-2xl font-serif font-bold leading-tight mb-6">
+            Contact us
+          </h2>
+          <div className="grid md:grid-cols-3 gap-4 items-center justify-center my-8">
             <div className="my-4">
               <h4 className="font-serif mb-4">Media Enqiries</h4>
               <p className="text-sm">
@@ -197,9 +225,16 @@ const IndexPage = ({ data }) => {
 
 export const data = graphql`
   query {
-    image: file(relativePath: { eq: "header-image-yellow.jpg" }) {
+    headerImageDesktop: file(relativePath: { eq: "header-image-yellow.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1440, maxHeight: 540) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    headerImageMobile: file(relativePath: { eq: "header-image-yellow.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 450, maxHeight: 400) {
           ...GatsbyImageSharpFluid
         }
       }
