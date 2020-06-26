@@ -4,17 +4,24 @@ import GatsbyLink from "gatsby-link"
 /**
  *
  * @param {Object} props
- * @param {string} props.to - the link
- * @param {string} props.children - the link content
+ * @param {string} props.to - href
+ * @param {string} [props.className] - custom classes
+ * @param {string} props.children - content
  */
 
-const Link = ({ to, children }) => {
+const Link = ({ to, className, children }) => {
+  const classes = `block ${className}`.trim()
+
   if (typeof window !== "undefined" && to.includes(window.location.hostname)) {
-    return <GatsbyLink to={to}>{children}</GatsbyLink>
+    return (
+      <GatsbyLink to={to} className={classes}>
+        {children}
+      </GatsbyLink>
+    )
   }
 
   return (
-    <a href={to} className="block">
+    <a href={to} className={classes}>
       {children}
     </a>
   )
