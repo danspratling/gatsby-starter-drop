@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import Hero from "../components/hero"
+import Hero from "../components/banners/hero"
 import Categories from "../components/categories"
 import Promos from "../components/promos"
 import Login from "../components/login"

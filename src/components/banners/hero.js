@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import LoginButtons from "./login"
+import LoginButtons from "../login"
 
 const Hero = () => {
   const data = useStaticQuery(graphql`
