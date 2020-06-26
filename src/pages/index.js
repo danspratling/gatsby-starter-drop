@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -15,12 +14,14 @@ const IndexPage = () => (
     <Hero />
     <Categories />
     <Promos />
-    <div className="relative w-full max-w-7xl m-auto bg-gray-200 px-16 py-16">
-      <h2 className="text-4xl leading-tight mb-4 uppercase text-center mb-10">
-        Join Drop today!
-      </h2>
-      <div className="grid grid-cols-3 gap-4 w-full max-w-4xl m-auto">
-        <Login />
+    <div className="w-full max-w-7xl m-auto bg-gray-200">
+      <div className="px-16 py-16">
+        <h2 className="text-4xl leading-tight uppercase text-center mb-10">
+          Join Drop today!
+        </h2>
+        <div className="grid grid-cols-3 gap-4 w-full max-w-4xl m-auto">
+          <Login />
+        </div>
       </div>
     </div>
   </Layout>
