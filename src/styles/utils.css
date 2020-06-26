@@ -15,5 +15,9 @@ h6 {
   @apply font-bold;
 }
 
+p {
+  @apply mb-4;
+}
+
 @tailwind components;
 @tailwind utilities;
