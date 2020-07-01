@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Link } from "gatsby"
+import Link from "../link"
 
 /**
  *
