@@ -1,7 +1,13 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
+/**
+ *
+ * @param {Object} props
+ * @param {String} props.title
+ * @param {Object} props.image
+ * @param {Array} props.products
+ */
 const Category = ({ title, image, products }) => {
   return (
     <div className="border border-gray-400">

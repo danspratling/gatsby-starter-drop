@@ -3,6 +3,10 @@ import { ModalContext } from "../context/modalContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
 
+/**
+ *
+ * @param {Object} props
+ */
 const ModalClose = props => (
   <button
     title="Close modal"
@@ -13,6 +17,10 @@ const ModalClose = props => (
   </button>
 )
 
+/**
+ *
+ * @param {Object} props
+ */
 const ModalOverlay = props => (
   <div
     className="absolute top-0 left-0 bottom-0 right-0 bg-gray-200 bg-opacity-95"
@@ -20,6 +28,12 @@ const ModalOverlay = props => (
   />
 )
 
+/**
+ *
+ * @param {Object} props
+ * @param {String} props.id
+ * @param {JSX.Element} props.children
+ */
 const Modal = ({ id, children }) => {
   const [state, setState] = useContext(ModalContext)
 

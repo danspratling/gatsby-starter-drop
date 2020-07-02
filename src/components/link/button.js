@@ -1,6 +1,12 @@
 import React from "react"
 import Link from "./"
 
+/**
+ *
+ * @param {Object} props
+ * @param {string} props.to
+ * @param {JSX.Element|String} props.children
+ */
 const LinkButton = ({ to, children }) => {
   return (
     <Link to={to}>

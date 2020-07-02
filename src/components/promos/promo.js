@@ -1,6 +1,11 @@
 import React from "react"
 import Img from "gatsby-image"
 
+/**
+ *
+ * @param {Object} props
+ * @param {string} props.image
+ */
 const Hero = ({ image }) => {
   return (
     <div className="w-full">

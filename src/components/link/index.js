@@ -6,7 +6,7 @@ import GatsbyLink from "gatsby-link"
  * @param {Object} props
  * @param {string} props.to - href
  * @param {string} [props.className] - custom classes
- * @param {string} props.children - content
+ * @param {JSX.Element|String} props.children - content
  */
 
 const Link = ({ to, className, children }) => {

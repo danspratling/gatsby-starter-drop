@@ -15,6 +15,13 @@ import Modal from "../modal"
 import SignUp from "../login/signUp"
 import SignIn from "../login/signIn"
 
+/**
+ *
+ * @param {Object} props
+ * @param {"none"|"static"|"scroll"} [props.headerScrollType]
+ * @param {String} [props.className]
+ * @param {JSX.Element} props.children
+ */
 const Layout = ({ headerScrollType, className, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {

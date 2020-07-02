@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const Footer = ({ siteTitle }) => {
+const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="w-full max-w-7xl mx-auto py-8 px-16">
