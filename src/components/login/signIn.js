@@ -1,12 +1,13 @@
-import React, { useReducer } from "react"
-import { initialState, reducer } from "../../reducers"
+import React, { useContext } from "react"
+import { ModalContext } from "../../context/modalContext"
 
-import Link from "../link"
 import FacebookButton from "./facebookButton"
 import GoogleButton from "./googleButton"
 
 const SignIn = () => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, setState] = useContext(ModalContext)
+
+  const openSignUp = () => setState(state => ({ ...state, modal: "signup" }))
 
   return (
     <div className="max-w-md m-auto text-center bg-white shadow-md">
@@ -63,7 +64,7 @@ const SignIn = () => {
           Not a member yet?{" "}
           <button
             className="inline-block underline hover:no-underline focus:no-underline text-black"
-            onClick={() => dispatch({ modal: "signup" })}
+            onClick={openSignUp}
           >
             Sign up
           </button>

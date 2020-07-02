@@ -1,12 +1,14 @@
-import React, { useReducer } from "react"
-import { initialState, reducer } from "../../reducers"
+import React, { useContext } from "react"
+import { ModalContext } from "../../context/modalContext"
 
 import Link from "../link"
 import FacebookButton from "./facebookButton"
 import GoogleButton from "./googleButton"
 
 const SignUp = () => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, setState] = useContext(ModalContext)
+
+  const openLogin = () => setState(state => ({ ...state, modal: "login" }))
 
   return (
     <div className="max-w-md m-auto text-center px-16 py-6 bg-white shadow-md">
@@ -72,7 +74,7 @@ const SignUp = () => {
         Already a member?{" "}
         <button
           className="inline-block underline hover:no-underline focus:no-underline"
-          onClick={() => dispatch({ modal: "signin" })}
+          onClick={openLogin}
         >
           Log in
         </button>

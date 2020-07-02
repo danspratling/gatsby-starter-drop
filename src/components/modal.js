@@ -1,4 +1,5 @@
-import React, { useReducer } from "react"
+import React, { useContext } from "react"
+import { ModalContext } from "../context/modalContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
 
@@ -19,8 +20,13 @@ const ModalOverlay = props => (
   />
 )
 
-const Modal = ({ active, open, close, children }) => {
-  if (active) {
+const Modal = ({ id, children }) => {
+  const [state, setState] = useContext(ModalContext)
+
+  const open = () => setState(state => ({ ...state, modal: id }))
+  const close = () => setState(state => ({ ...state, modal: null }))
+
+  if (state?.modal === id) {
     return (
       <div className="fixed top-0 left-0 bottom-0 right-0 z-50">
         <ModalClose onClick={close} />

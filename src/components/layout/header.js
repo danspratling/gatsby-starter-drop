@@ -1,4 +1,6 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useContext } from "react"
+import { ModalContext } from "../../context/modalContext"
+
 import Link from "../link"
 
 /**
@@ -10,6 +12,10 @@ import Link from "../link"
 const Header = ({ siteTitle, headerScrollType = "none" }) => {
   const headerEl = useRef(null)
   const [sticky, setSticky] = useState(false)
+  const [modalState, setModalState] = useContext(ModalContext)
+
+  const openModal = id =>
+    setModalState(modalState => ({ ...modalState, modal: id }))
 
   // When the user scrolls the page, execute myFunction
   if (typeof window !== "undefined" && headerEl) {
@@ -45,12 +51,18 @@ const Header = ({ siteTitle, headerScrollType = "none" }) => {
             <Link to="/">{siteTitle}</Link>
           </h1>
           <nav>
-            <Link to="#" className="px-10 font-heading uppercase">
+            <button
+              className="px-10 font-heading uppercase"
+              onClick={() => openModal("login")}
+            >
               Log in
-            </Link>
-            <Link to="#" className="px-10 font-heading uppercase">
+            </button>
+            <button
+              className="px-10 font-heading uppercase"
+              onClick={() => openModal("signup")}
+            >
               Sign up
-            </Link>
+            </button>
           </nav>
         </div>
       </div>
